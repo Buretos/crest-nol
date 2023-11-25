@@ -1,9 +1,10 @@
 import './App.css';
+import Game from './componenst/Game/Game';
 
 const App = () => {
 	return (
 		<div className="App">
-			<header className="App-header">Привет!</header>
+			<Game />
 		</div>
 	);
 };
