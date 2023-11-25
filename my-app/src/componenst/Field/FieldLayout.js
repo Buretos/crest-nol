@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Field.module.css';
 
-const FieldLayout = ({ field, onCellClick }) => {
+const FieldLayout = ({ field, onCellClick, winningCombinationIndex }) => {
 	const handleClick = (index) => {
 		onCellClick(index); // Вызываем функцию обработки клика, переданную из Game.js
 	};
@@ -13,7 +13,12 @@ const FieldLayout = ({ field, onCellClick }) => {
 				{field.map((cell, i) => (
 					<button
 						key={i}
-						className={styles.cell}
+						className={`${styles.cell} ${
+							winningCombinationIndex !== null &&
+							winningCombinationIndex.includes(i)
+								? styles.winningCell
+								: ''
+						}`} // Применяем класс winningCell к кнопкам победной комбинации
 						onClick={() => handleClick(i)}
 					>
 						{cell}
@@ -27,6 +32,7 @@ const FieldLayout = ({ field, onCellClick }) => {
 FieldLayout.propTypes = {
 	field: PropTypes.array,
 	onCellClick: PropTypes.func,
+	winningCombinationIndex: PropTypes.array, // Добавляем пропс winningCombinationIndex
 };
 
 export default FieldLayout;

@@ -9,6 +9,7 @@ const GameLayout = ({
 	isGameEnded,
 	isDraw,
 	field,
+	winningCombinationIndex,
 	onCellClick,
 	newGameClick,
 }) => {
@@ -21,7 +22,11 @@ const GameLayout = ({
 					isDraw={isDraw}
 					newGameClick={newGameClick}
 				/>
-				<Field field={field} onCellClick={onCellClick} />
+				<Field
+					field={field}
+					onCellClick={onCellClick}
+					winningCombinationIndex={winningCombinationIndex}
+				/>
 			</div>
 		</>
 	);
@@ -32,6 +37,7 @@ GameLayout.propTypes = {
 	isGameEnded: PropTypes.bool,
 	isDraw: PropTypes.bool,
 	field: PropTypes.array,
+	winningCombinationIndex: PropTypes.array,
 	onCellClick: PropTypes.func,
 	newGameClick: PropTypes.func,
 };

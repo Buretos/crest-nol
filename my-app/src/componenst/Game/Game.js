@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import GameLayout from './GameLayout';
 
 const Game = () => {
@@ -6,6 +7,7 @@ const Game = () => {
 	const [isGameEnded, setIsGameEnded] = useState(false);
 	const [isDraw, setIsDraw] = useState(false);
 	const [field, setField] = useState(['', '', '', '', '', '', '', '', '']);
+	const [winningCombinationIndex, setWinningCombinationIndex] = useState(null); // Новое состояние
 
 	const handleCellClick = (index) => {
 		if (isGameEnded || field[index] !== '') return;
@@ -41,6 +43,8 @@ const Game = () => {
 				updatedField[a] === updatedField[c]
 			) {
 				setIsGameEnded(true);
+				setWinningCombinationIndex(WIN_PATTERNS[i]); // Устанавливаем индекс победной комбинации
+
 				break;
 			}
 		}
@@ -55,6 +59,7 @@ const Game = () => {
 		setIsGameEnded(false);
 		setIsDraw(false);
 		setField(['', '', '', '', '', '', '', '', '']);
+		setWinningCombinationIndex(null); // Сбрасываем индекс победной комбинации
 	};
 
 	return (
@@ -63,10 +68,21 @@ const Game = () => {
 			isGameEnded={isGameEnded}
 			isDraw={isDraw}
 			field={field}
+			winningCombinationIndex={winningCombinationIndex} // Передаем индекс победной комбинации
 			onCellClick={handleCellClick}
 			newGameClick={handleNewGameClick}
 		/>
 	);
+};
+
+Game.propTypes = {
+	currentPlayer: PropTypes.string,
+	isGameEnded: PropTypes.bool,
+	isDraw: PropTypes.bool,
+	field: PropTypes.array,
+	winningCombinationIndex: PropTypes.array,
+	onCellClick: PropTypes.func,
+	newGameClick: PropTypes.func,
 };
 
 export default Game;

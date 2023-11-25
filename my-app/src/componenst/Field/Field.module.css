@@ -25,3 +25,10 @@
 		transition: .3s all ease;
 	}
 
+	.winningCell {
+		background: green;
+	}
+
+	.winningCell:hover {
+		background: rgb(0, 95, 0);
+	}
