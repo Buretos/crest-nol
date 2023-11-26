@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import GameLayout from './GameLayout';
 
 const Game = () => {
@@ -73,16 +72,6 @@ const Game = () => {
 			newGameClick={handleNewGameClick}
 		/>
 	);
-};
-
-Game.propTypes = {
-	currentPlayer: PropTypes.string,
-	isGameEnded: PropTypes.bool,
-	isDraw: PropTypes.bool,
-	field: PropTypes.array,
-	winningCombinationIndex: PropTypes.array,
-	onCellClick: PropTypes.func,
-	newGameClick: PropTypes.func,
 };
 
 export default Game;

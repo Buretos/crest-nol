@@ -6,7 +6,7 @@ const InformationLayout = ({ currentPlayer, isGameEnded, isDraw, newGameClick })
 	return (
 		<>
 			<div className={styles.status}>
-				{isDraw
+				{isDraw && !isGameEnded
 					? 'Ничья'
 					: isGameEnded
 					? `Победа: ${currentPlayer === 'X' ? 'O' : 'X'}`
